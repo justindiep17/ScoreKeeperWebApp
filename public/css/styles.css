@@ -1,3 +1,26 @@
+.navbar {
+  padding: 2vh 5vh;
+  padding: none;
+  background-color: #292b2c;
+}
+
+.navbar div {
+  padding: 0px 3.5px;
+}
+
+.navbar-label {
+  font-family: "Inter";
+  font-size: 1rem;
+  color: white;
+  margin-right: 0.5rem;
+}
+
+.navbar-input {
+  font-family: "Inter";
+  font-size: 1rem;
+  text-align: center;
+}
+
 #scoreboard {
   margin: 2.5vh 5vh;
   height: 95vh;
@@ -60,7 +83,9 @@
   font-family: "Inter";
   font-size: 2rem;
   margin: 0.5rem;
+  text-align: center;
 }
+
 .btn {
   border-radius: 0rem;
 }
