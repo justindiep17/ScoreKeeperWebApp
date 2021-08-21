@@ -1,6 +1,7 @@
 let players = []
 const addPlayerBtn = document.querySelector('#add-player-btn')
 const scoreboard = document.querySelector('#scoreboard')
+const pointsToWinInput = document.querySelector('#points-to-win-input')
 
 class Player {
   constructor(name, id) {
@@ -10,6 +11,41 @@ class Player {
   }
 }
 
+function refresh() {
+  location.reload()
+}
+
+// Checks If There Is A Player That Has 'Won' Yet. That Is A Player Who Has The Desired Amount Of Points
+function checkWinnerYet() {
+  const pointsNeeded = pointsToWinInput.value
+  for (let player of players) {
+    if (player.score === parseInt(pointsNeeded, 10)) {
+      // Create Popup Message That Tells User Who Won And Allows Them To Choose How To Proceed
+      let popup = document.createElement("div")
+      popup.classList.add("popup")
+      popup.classList.add("card")
+      popup.innerHTML =
+        `<div class="card-body">
+          <h5 class="card-title">${player.name} Has Won!!!</h5>
+          <div class="row">
+            <div class="popup-btn-div col-6">
+              <a href="#" class="btn btn-outline-light col-6 popup-btn">Reset</a>
+            </div>
+            <div class="popup-btn-div col-6">
+              <a href="#" class="btn btn-outline-light popup-btn">Continue</a>
+            </div>
+          </div>
+        </div>`
+      scoreboard.appendChild(popup)
+      const popupBtns = document.querySelectorAll('.popup-btn')
+      popupBtns[0].addEventListener('click', refresh)
+      popupBtns[1].addEventListener('click', () => {
+        document.querySelector('.popup').remove()
+      })
+      break
+    }
+  }
+}
 
 // Find The Index Of The Player In 'players' With The ID 'id'
 function findPlayersIndex(id) {
@@ -41,6 +77,7 @@ function createAddPtsFunc(id) {
       const ptsDisplay = document.querySelector(`#scorecard${id} .pts-label`)
       ptsDisplay.innerHTML = `${players[index].score}`
     }
+    checkWinnerYet()
   }
   return f
 }
@@ -55,6 +92,7 @@ function createSubPtsFunc(id) {
       const ptsDisplay = document.querySelector(`#scorecard${id} .pts-label`)
       ptsDisplay.innerHTML = `${players[index].score}`
     }
+    checkWinnerYet()
   }
   return f
 }
@@ -130,6 +168,5 @@ function addPlayer() {
   }
 }
 
-
-
 addPlayerBtn.addEventListener('click', addPlayer)
+pointsToWinInput.addEventListener('change', checkWinnerYet)

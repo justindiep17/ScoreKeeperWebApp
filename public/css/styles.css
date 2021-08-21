@@ -21,6 +21,7 @@
   text-align: center;
 }
 
+
 #scoreboard {
   margin: 2.5vh 5vh;
   height: 95vh;
@@ -65,9 +66,6 @@
 }
 
 .scoreboard-btns .btn {
-  display: flex;
-  align-items: center; 
-  justify-content: center;
   font-family: "Inter";
   font-size: 1rem;
   font-weight: 900;
@@ -88,5 +86,43 @@
 
 .btn {
   border-radius: 0rem;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
 }
 
+.popup {
+  position: absolute;
+  border: 2px solid black;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  flex-direction: center;
+  background-color: rgba(41, 43, 44, 0.9);
+}
+
+.popup-btn-div a {
+  width: 100%;
+  height: 100%;
+  margin: none;
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Inter";
+  padding: none;
+}
+
+.card-title {
+  font-size: 2rem;
+  color: #f7f7f7;
+  font-weight: 500;
+}
